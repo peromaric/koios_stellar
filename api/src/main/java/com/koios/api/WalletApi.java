@@ -15,10 +15,10 @@ import java.util.List;
 
 @RestController
 public class WalletApi {
-    WalletManager walletController;
+    WalletManager walletManager;
 
     public WalletApi() throws IOException {
-        this.walletController = new WalletManager();
+        this.walletManager = new WalletManager();
     }
 
     // Immediately redirect to swagger UI. Generates swagger but ignoring for starters.
@@ -33,7 +33,7 @@ public class WalletApi {
     @ResponseStatus(code = HttpStatus.OK, reason = "Wallet added successfully!")
     void addWallet(@PathVariable String key) {
         try {
-            walletController.addWallet(key);
+            walletManager.addWallet(key);
         } catch (RuntimeException e) {
             throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR, "Error! No logging yet :(\n");
         }
@@ -42,21 +42,21 @@ public class WalletApi {
     @GetMapping("/wallets")
     @CrossOrigin(origins = "http://localhost:4200")
     List<Wallet> wallets() throws IOException {
-        walletController.updateBalances();
-        return walletController.getWallets();
+        walletManager.updateBalances();
+        return walletManager.getWallets();
     }
 
 
     @GetMapping("/fund-account/{id}")
     String fundAccount(String id) throws IOException {
-        return walletController.fundAccount(id);
+        return walletManager.fundAccount(id);
     }
 
     @PutMapping("/transaction/{amount}")
     @CrossOrigin(origins = "http://localhost:4200")
     void sendFromTo(@RequestBody List<Wallet> walletsBody, @PathVariable String amount)
             throws AccountRequiresMemoException, IOException {
-        this.walletController.sendFromTo(
+        this.walletManager.sendFromTo(
                 walletsBody.get(0).address,
                 walletsBody.get(1).address,
                 amount);

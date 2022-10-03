@@ -1,5 +1,5 @@
 ########Maven build stage########
-FROM openjdk:20-ea-17-jdk-oraclelinux8
+FROM eclipse-temurin:17-jdk-jammy
 
 WORKDIR /app
 
