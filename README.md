@@ -24,6 +24,8 @@ There surely is a better way. *You also need to compose down before every compos
 ### Usage
 
 - create an account https://laboratory.stellar.org/#account-creator?network=test via "generate keypair"
+- !IMPORTANT -> Stellar testnet considers account created only when it has at least ONE XLM.
+  So please fund this wallet immediately!
 - api needs your "Secret Key" (well, Not-So-Secret Key in this case ;) )
 - you provide it to the api by visiting swagger http://localhost:8080/ autoredirects. See pic below:
 ![image](https://user-images.githubusercontent.com/67732669/193683064-3c82f90b-b997-48c7-9a7f-cfa1814ca02c.png)
