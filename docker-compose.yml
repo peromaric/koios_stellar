@@ -1,0 +1,18 @@
+version: "3"
+
+services:
+  web:
+    container_name: web_wallet_interactor
+    image: web_wallet_interactor:latest
+    build:
+      context: .
+      dockerfile: ./dockerfiles/Dockerfile_web
+    network_mode: "host"
+
+  api:
+    container_name: wallet_api
+    image: wallet_api:latest
+    build:
+      context: .
+      dockerfile: ./dockerfiles/Dockerfile_api
+    network_mode: "host"

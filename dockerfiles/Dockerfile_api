@@ -1,0 +1,9 @@
+########Maven build stage########
+FROM openjdk:20-ea-17-jdk-oraclelinux8
+
+WORKDIR /app
+
+#copy pom
+COPY ./api .
+
+CMD ["./mvnw", "spring-boot:run"]
