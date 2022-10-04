@@ -18,7 +18,7 @@ docker logs -f wallet_api
 
 You need to compose up --build every time you start. Why? Maven I suppose.
 It does come in handy though, in case maven packages are updated.
-There surely is a better way. *You also need to compose down before every compose up.*
+There surely is a better way. Volumes? Caching maven stuff? *You also need to compose down before every compose up.*
 
 
 ### Usage
