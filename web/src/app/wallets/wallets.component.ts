@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ɵisPromise } from '@angular/core';
 
 import { WalletService} from '../services/wallet.service'
 import { Wallet } from '../interfaces/wallet';
 import { FormControl } from '@angular/forms';
+import { Observable, of } from 'rxjs';
 
 @Component({
   selector: 'app-wallets',
@@ -29,7 +30,6 @@ export class WalletsComponent implements OnInit {
   }
 
   sendTransaction(): void {
-    console.log(this.amount.value)
     if (this.amount.value > 0) {
       let walletTransfer: Wallet[] = [];
       if(this.selectedWallet != undefined) {
@@ -46,8 +46,7 @@ export class WalletsComponent implements OnInit {
   }
 
   getWallets() {
-    this.walletService.getWallets()
-      .subscribe(wallets => this.wallets = wallets);
+    this.walletService.getWallets().subscribe(wallets => this.wallets = wallets);
   }
 
 }

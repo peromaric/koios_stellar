@@ -14,7 +14,7 @@
       [ngClass]="{'btn-light': selectedWallet == wallet, 'btn-dark': selectedWallet != wallet}" 
       (click)="onSelect(wallet)">Select</button>
     </div>
-    <label for="walletSecretKey">Your wallet's secret key: </label>
+    <label for="walletSecretKey">Enter the amount you wish to send: </label>
     <input id="walletSecretKey" type="text" [formControl]="amount">
     <button type="button" class="btn btn-light col-sm-12 btn-lg border" (click)="sendTransaction()">Transfer XLM</button>
   </div>
