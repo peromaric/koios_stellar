@@ -27,15 +27,12 @@ There surely is a better way. *You also need to compose down before every compos
 - !IMPORTANT -> Stellar testnet considers account created only when it has at least ONE XLM.
   So please fund this wallet immediately!
 - api needs your "Secret Key" (well, Not-So-Secret Key in this case ;) )
+- visit http://localhost:4200/ , it's where the webapp is
+- when you open the app you can enter and register OR
 - you provide it to the api by visiting swagger http://localhost:8080/ autoredirects. See pic below:
 ![image](https://user-images.githubusercontent.com/67732669/193683064-3c82f90b-b997-48c7-9a7f-cfa1814ca02c.png)
-
-#TODO
-
-Add the option of adding the keys via webapp! Also - error handling!
-
+- once you register the first account you do the same for the second one
 - send two seeds please, for these two accounts. Two - no more no less, my app can't currently handle it :'(
-- visit http://localhost:4200/ , it's where the webapp is
 - you should see two wallet (account) components generated
 - select the account you wish to transfer **FROM** by clicking the button within the component
 - put the amount into the input field and click on the giant "Transfer XLM" button
