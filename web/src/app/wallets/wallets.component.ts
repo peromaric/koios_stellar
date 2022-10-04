@@ -1,9 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
-import { WalletComponent } from '../wallet/wallet.component'
 import { WalletService} from '../services/wallet.service'
 import { Wallet } from '../interfaces/wallet';
-import { MessageService } from '../services/message.service';
 
 @Component({
   selector: 'app-wallets',
@@ -17,8 +15,8 @@ export class WalletsComponent implements OnInit {
   wallets: Wallet[] = [];
 
   constructor(
-    private walletService: WalletService, 
-    private messageService: MessageService) { }
+    private walletService: WalletService
+    ) { }
 
   ngOnInit(): void {
     this.getWallets();
@@ -26,7 +24,6 @@ export class WalletsComponent implements OnInit {
 
   onSelect(wallet: Wallet): void {
     this.selectedWallet = wallet;
-    this.messageService.add(`Selected ${wallet.address}`)
   }
 
   sendTransaction() {

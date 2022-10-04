@@ -31,9 +31,9 @@ public class WalletApi {
     @PostMapping("/wallet/add/{key}")
     @CrossOrigin(origins = "http://localhost:4200")
     @ResponseStatus(code = HttpStatus.OK, reason = "Wallet added successfully!")
-    void addWallet(@PathVariable String key) {
+    String addWallet(@PathVariable String key) {
         try {
-            walletManager.addWallet(key);
+            return walletManager.addWallet(key);
         } catch (RuntimeException e) {
             throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR, "Error! No logging yet :(\n");
         }
@@ -47,8 +47,8 @@ public class WalletApi {
     }
 
 
-    @GetMapping("/fund-account/{id}")
-    String fundAccount(String id) throws IOException {
+    @PostMapping("/fund-account/{id}")
+    String fundAccount(@PathVariable String id) throws IOException {
         return walletManager.fundAccount(id);
     }
 

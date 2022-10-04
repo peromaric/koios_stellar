@@ -1,6 +1,15 @@
-<h2>Press the button to select the wallet to transfer FROM</h2>
+
 <div class="container mt-3 mb-3">
-  <div class="row">
+  <div *ngIf="wallets.length < 2; else walletsCreatedBlock">
+    <div *ngIf="wallets.length == 0; else fundWalletBlock">
+        <app-wallet-create></app-wallet-create>
+    </div>
+    <ng-template #fundWalletBlock>
+      <app-wallet [wallet]="wallets[0]"></app-wallet>
+    </ng-template>
+  </div>
+  <ng-template #walletsCreatedBlock class="row">
+    <h2>Press the button to select the wallet to transfer FROM</h2>
     <div class= "col-sm border mt-3 mb-3 pb-3 pt-3" 
     *ngFor="let wallet of wallets"
     [ngClass]="{'bg-dark text-white': selectedWallet == wallet, 'bg-light text-black': selectedWallet != wallet}" 
@@ -13,7 +22,7 @@
       (click)="onSelect(wallet)">Select</button>
     </div>
     <button type="button" class="btn btn-light col-sm-12 btn-lg border" (click)="sendTransaction()">Transfer XLM</button>
-  </div>
+  </ng-template>
 </div>
 
 

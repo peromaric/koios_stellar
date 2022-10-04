@@ -30,12 +30,13 @@ public class WalletManager {
         return wallets.stream().map(WalletExtended::getWallet).toList();
     }
 
-    public void addWallet(String key) throws RuntimeException {
+    public String addWallet(String key) throws RuntimeException {
         String walletName = String.format("Wallet %d", wallets.size() + 1);
         WalletExtended wallet = new WalletExtended(walletName);
 
         wallet.setKeyPair(key);
         wallets.add(wallet);
+        return wallet.address;
     }
     public String fundAccount(String id) throws IOException {
         String friendbotUrl = String.format(
@@ -55,8 +56,14 @@ public class WalletManager {
     }
 
     private Double getBalance(String id) throws IOException {
-        AccountResponse account = this.stellarServer.accounts().account(id);
-        return Double.parseDouble(account.getBalances()[0].getBalance());
+        try {
+            AccountResponse account = this.stellarServer.accounts().account(id);
+            return Double.parseDouble(account.getBalances()[0].getBalance());
+        } catch (Exception e) {
+            // in case AccountResponse returns an exception (account isn't created)
+            // just log this error in the console and throw IOexception
+            throw new IOException("Account isn't created or wallet isn't found");
+        }
     }
 
     public void sendFromTo(String pubKey1, String pubKey2, String amount)
