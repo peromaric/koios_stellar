@@ -14,18 +14,22 @@
       [ngClass]="{'btn-light': selectedWallet == wallet, 'btn-dark': selectedWallet != wallet}" 
       (click)="onSelect(wallet)">Select</button>
     </div>
+    <label for="walletSecretKey">Your wallet's secret key: </label>
+    <input id="walletSecretKey" type="text" [formControl]="amount">
     <button type="button" class="btn btn-light col-sm-12 btn-lg border" (click)="sendTransaction()">Transfer XLM</button>
   </div>
 
   <ng-template #noWalletsBlock>
-    <div *ngIf="wallets.length == 0; else fundWalletBlock">
+    <div class="row" *ngIf="wallets.length == 0; else oneWalletBlock">
         <app-wallet-create></app-wallet-create>
     </div>
   </ng-template>
 
-  <ng-template #fundWalletBlock>
-    <app-wallet [wallet]="wallets[0]"></app-wallet>
-    <app-wallet-create></app-wallet-create>
+  <ng-template #oneWalletBlock>
+    <div class="row">
+      <app-wallet [wallet]="wallets[0]"></app-wallet>
+      <app-wallet-create></app-wallet-create>
+    </div>
   </ng-template>
   
   
