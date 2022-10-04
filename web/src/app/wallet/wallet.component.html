@@ -1,5 +1,5 @@
-<div *ngIf="wallet">
-  <div>{{wallet.name | uppercase}}</div>
-  <div><span>id: </span>{{wallet.address}}</div>
-  <div><span>balance: </span>{{wallet.balance}}</div>
+<div *ngIf="wallet" class="container">
+  <div class="col-sm-12">{{wallet.name | uppercase}}</div>
+  <div class="col-sm-12">id: {{wallet.address}}</div>
+  <div class="col-sm-12">balance: {{wallet.balance}}</div>
 </div>

@@ -26,9 +26,13 @@
   </ng-template>
 
   <ng-template #oneWalletBlock>
-    <div class="row">
-      <app-wallet [wallet]="wallets[0]"></app-wallet>
-      <app-wallet-create (registerWalletEvent)="registerWallet($event)"></app-wallet-create>
+    <div class="container">
+      <div class= "col-sm-12 row border mt-3 mb-3 pb-3 pt-3 bg-light">
+        <app-wallet [wallet]="wallets[0]"></app-wallet>
+      </div>
+      <div class= "col-sm-12 row border mt-3 mb-3 pb-3 pt-3">
+        <app-wallet-create (registerWalletEvent)="registerWallet($event)"></app-wallet-create>
+      </div>
     </div>
   </ng-template>
   

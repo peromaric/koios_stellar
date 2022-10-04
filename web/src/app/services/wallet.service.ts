@@ -29,6 +29,7 @@ export class WalletService {
 
   sendTransaction(wallets: Wallet[], amount: string): Observable<any> {
     return this.http.put(this.walletApiUrl + this.PUT_TRANSACTION_ENDPOINT + `/${amount}`, wallets).pipe(
+      tap(_ => console.log("Transaction completed")),
       catchError(this.handleError<any>("sendTransaction", []))
     );;
   }
