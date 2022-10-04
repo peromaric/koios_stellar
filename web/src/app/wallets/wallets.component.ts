@@ -3,7 +3,6 @@ import { Component, OnInit, ɵisPromise } from '@angular/core';
 import { WalletService} from '../services/wallet.service'
 import { Wallet } from '../interfaces/wallet';
 import { FormControl } from '@angular/forms';
-import { Observable, of } from 'rxjs';
 
 @Component({
   selector: 'app-wallets',
@@ -45,8 +44,12 @@ export class WalletsComponent implements OnInit {
     
   }
 
-  getWallets() {
+  getWallets(): void {
     this.walletService.getWallets().subscribe(wallets => this.wallets = wallets);
   }
 
+  registerWallet(walletSecretKey: string | null): void {
+      this.walletService.registerWallet(walletSecretKey)
+        .subscribe(() => this.getWallets());
+  }
 }

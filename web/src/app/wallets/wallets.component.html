@@ -21,14 +21,14 @@
 
   <ng-template #noWalletsBlock>
     <div class="row" *ngIf="wallets.length == 0; else oneWalletBlock">
-        <app-wallet-create></app-wallet-create>
+        <app-wallet-create (registerWalletEvent)="registerWallet($event)"></app-wallet-create>
     </div>
   </ng-template>
 
   <ng-template #oneWalletBlock>
     <div class="row">
       <app-wallet [wallet]="wallets[0]"></app-wallet>
-      <app-wallet-create></app-wallet-create>
+      <app-wallet-create (registerWalletEvent)="registerWallet($event)"></app-wallet-create>
     </div>
   </ng-template>
   
