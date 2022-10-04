@@ -48,7 +48,6 @@ public class WalletManager {
         return ("SUCCESS! You have a new account :)\n" + body);
     }
 
-
     public void updateBalances() throws IOException {
         for (WalletExtended wallet : wallets) {
             wallet.balance = this.getBalance(wallet.address);
@@ -106,7 +105,6 @@ public class WalletManager {
         SubmitTransactionResponse response = stellarServer.submitTransaction(transaction);
         System.out.println("Success!");
         System.out.println(response);
-
+        this.updateBalances();
     }
-
 }

@@ -21,6 +21,7 @@ export class WalletCreateComponent implements OnInit {
   }
 
   onSubmit(): void {
-    console.log(this.walletService.registerWallet(this.walletSecretKey.value).subscribe(() => this.walletService.getWallets()));
+    this.walletService.registerWallet(this.walletSecretKey.value)
+      .subscribe(() => this.walletService.getWallets());
   }
 }

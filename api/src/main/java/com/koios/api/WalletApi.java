@@ -39,11 +39,21 @@ public class WalletApi {
         }
     }
 
+    /**
+     * Wallet manager's updateBalances() will throw an error in case a wallet is unfunded.
+     * Need to find a better way of handling this error
+     * @return - a list of wallets in any case, whether an error was thrown or not.
+     * However, it does return the default balance - 0, which is ok.
+     */
     @GetMapping("/wallets")
     @CrossOrigin(origins = "http://localhost:4200")
-    List<Wallet> wallets() throws IOException {
-        walletManager.updateBalances();
-        return walletManager.getWallets();
+    List<Wallet> wallets() {
+        try {
+            walletManager.updateBalances();
+            return walletManager.getWallets();
+        } catch (RuntimeException | IOException e) {
+            return walletManager.getWallets();
+        }
     }
 
 
